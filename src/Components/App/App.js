@@ -23,15 +23,27 @@ class App extends Component {
         album: 'Album One'
       }]
     };
+
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
 addTrack(track)
   {
+    console.log(this.state.playlistTracks);
     if(!this.state.playlistTracks.find(t => t.name === track.name))
     {
       let tempList = this.state.playlistTracks.slice();
       tempList.push(track);
       this.setState({ playlistTracks: tempList });
+    }
+  }
+
+  removeTrack(track) {
+    if(this.state.playlistTracks.find(t => track.name)) {
+      let tempList = this.state.playlistTracks.slice();
+      tempList.pop(track);
+      this.setState({playlistTracks: tempList});
     }
   }
 
@@ -41,6 +53,7 @@ addTrack(track)
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
           <div className="App">
             <SearchBar />
+            
            <div className="App-playlist">
              <SearchResults 
                 searchResults={this.state.searchResults}
@@ -48,7 +61,8 @@ addTrack(track)
 
              <Playlist 
                 playlistName={this.state.playlistName}
-                playlistTracks={this.state.playlistTracks}/>
+                playlistTracks={this.state.playlistTracks}
+                onRemove={this.removeTrack} />
 
             </div>
           </div>

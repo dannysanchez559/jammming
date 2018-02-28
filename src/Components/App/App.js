@@ -54,7 +54,6 @@ addTrack(track)
     alert(`Successfully saved '${this.state.playlistName}' to Spotify.`);
 
     this.setState({
-      searchResults: [],
       playlistTracks: [],
       playlistName: 'New Playlist'
     });

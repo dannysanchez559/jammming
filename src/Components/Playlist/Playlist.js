@@ -20,6 +20,7 @@ class Playlist extends React.Component {
         <input 
            defaultValue={this.props.updateDefaultName} 
            onChange={this.handleNameChange}
+           value={this.props.updateDefaultName}
             />
         <TrackList
            tracks={this.props.playlistTracks}

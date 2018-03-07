@@ -1,5 +1,7 @@
 const client_id = '6e01da261ab844e7abf0d39d93d49200';
-const redirect_uri = 'http://localhost:3000/';
+/*const redirect_uri = 'https://myapp-jammming.surge.sh';*/
+const redirect_uri = 'https://myapp-jammming.surge.sh';
+
 let accessToken = undefined;
 let expiresIn = undefined;
 
@@ -7,7 +9,7 @@ let Spotify = {
 
 	getAccessToken() {
 		// return userToken if already set
-		if(accessToken) {
+		if(accessToken) {		
 			return accessToken;
 		}
 
@@ -42,7 +44,7 @@ let Spotify = {
 			})
 		.then(response => response.json())
 		.then(jsonResponse => {
-			//console.log(jsonResponse);
+			console.log(jsonResponse);
 			if(!jsonResponse.tracks) return [];
 			return jsonResponse.tracks.items.map(track => {
 				return {

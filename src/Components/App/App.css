@@ -45,6 +45,9 @@ h2 {
 }
 
 @media only screen and (max-width: 1020px) {
+  .App {
+    padding: 0 5% 0 5%;
+  }
   .App-playlist {
     align-items: center;
     flex-direction: column;

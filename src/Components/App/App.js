@@ -5,10 +5,6 @@ import SearchResults from '../SearchResults/SearchResults.js';
 import Playlist from '../Playlist/Playlist.js';
 import Spotify from '../../util/Spotify.js';
 
-
-Spotify.getAccessToken();
-//Spotify.savePlaylist('a',[1,2,3]);
-
 class App extends Component {
 
   constructor(props) {
@@ -16,10 +12,9 @@ class App extends Component {
 
     this.state = {
       searchResults: [],
-
       playlistName: 'New Playlist',
-
-      playlistTracks: []
+      playlistTracks: [],
+      loggedIn: false
     };
 
     this.addTrack = this.addTrack.bind(this);
@@ -28,6 +23,7 @@ class App extends Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.search = this.search.bind(this);
   }
+
 
 addTrack(track)
   {
@@ -70,12 +66,12 @@ addTrack(track)
     }));
   }
   
-
   
 
   render() {
+
    // if there are no searches, display only search bar   
-    console.log(this.state.search);
+    Spotify.getAccessToken();
     if(this.state.searchResults.length === 0 && this.state.search === undefined) {
       return (
           <div>
